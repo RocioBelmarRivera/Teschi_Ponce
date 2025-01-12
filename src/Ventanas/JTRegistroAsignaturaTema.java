@@ -67,7 +67,7 @@ public class JTRegistroAsignaturaTema extends javax.swing.JFrame {
               
               
               
-               public void asignaValores(){
+  public void asignaValores(){
     
   asignatura=(String) JCBAsignatura.getSelectedItem(); 
 
