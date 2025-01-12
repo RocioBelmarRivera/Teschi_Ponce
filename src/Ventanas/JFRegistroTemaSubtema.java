@@ -17,77 +17,49 @@ import javax.swing.JComboBox;
  *
  * @author HP
  */
-public class JFRegistroCarreraAsignatura extends javax.swing.JFrame {
+public class JFRegistroTemaSubtema extends javax.swing.JFrame {
 
     /**
-     * Creates new form JFRegistroCarreraAsignatura
+     * Creates new form JFRegistroTemaSubtema
      */
-    public JFRegistroCarreraAsignatura() {
+    public JFRegistroTemaSubtema() {
         initComponents();
-        
-        cargaComboBox(JCBCarrera, 1);
-        cargaComboBox1(JCBAsignatura, 1);
-        
-             // Ajustar el tamaño automáticamente
-        pack();
-        
-        // Centrar el JFrame en la pantalla
-        setLocationRelativeTo(null);
-        
     }
-
-    private DefaultComboBoxModel listas;
-    private ArrayList<String> datosListas = new ArrayList<>();
-    private final CCargaBox queryCarga = new CCargaBox();
-    private final CCargaBox queryCarga1 = new CCargaBox();
-    private final CInserta queryInserta1= new CInserta();
-    private CBusca queryBusca2 = new CBusca();
-    private CBusca queryBusca3 = new CBusca();
     
+      private DefaultComboBoxModel listas;
+        private ArrayList<String> datosListas = new ArrayList<>();
+        private final CCargaBox queryCarga = new CCargaBox();
+        private final CCargaBox queryCarga1 = new CCargaBox();
+        private final CInserta queryInserta1= new CInserta();
+        private CBusca queryBusca2 = new CBusca();
+        private CBusca queryBusca3 = new CBusca();
+        
+        String subtema;
+        String tema;
+        
+        
+    public void limpiar(){
     
-    
-    String asignatura;
-    String carrera;
-    
-    
-    
-         public void limpiar(){
-    
-    JCBCarrera.setSelectedIndex(0); 
+    JCBTema.setSelectedIndex(0); 
     // Limpiar el JComboBox, restaurándolo a la selección inicial o vacía
-    JCBAsignatura.setSelectedIndex(0);  // 0 selecciona el primer ítem de la lista, o puedes usar -1 para deseleccionar
+    JCBSubtema.setSelectedIndex(0);  // 0 selecciona el primer ítem de la lista, o puedes usar -1 para deseleccionar
     
     }
-     public void asignaValores(){
+              
+              
+              
+               public void asignaValores(){
     
-  asignatura=(String) JCBAsignatura.getSelectedItem(); 
+  subtema=(String) JCBSubtema.getSelectedItem(); 
 
     // Obtener el valor seleccionado en el JComboBox
-    carrera = (String) JCBCarrera.getSelectedItem();  // Asignamos el valor seleccionado a la variable estado
+  tema = (String) JCBTema.getSelectedItem();  // Asignamos el valor seleccionado a la variable estado
   
     
     }
-    
-    
-       //asignamos valores al combo box
+               
+                            //asignamos valores al combo box
       public void cargaComboBox(JComboBox combo, int metodoCarga) {
-        listas = (DefaultComboBoxModel) combo.getModel();
-        try {
-            switch (metodoCarga) {
-                case 1:
-                    datosListas = queryCarga.cargaNombreCarrera();
-                    for (int i = 0; i < datosListas.size(); i++) {
-                        listas.addElement(datosListas.get(i));
-                    }
-                    datosListas.clear();
-                    break;
-            }
-        } catch (SQLException e) {
-        }
-    }
-      
-      
-         public void cargaComboBox1(JComboBox combo, int metodoCarga) {
         listas = (DefaultComboBoxModel) combo.getModel();
         try {
             switch (metodoCarga) {
@@ -98,26 +70,34 @@ public class JFRegistroCarreraAsignatura extends javax.swing.JFrame {
                     }
                     datosListas.clear();
                     break;
+                    
+                     case 2:
+                    datosListas = queryCarga.cargaNombreTema();
+                    for (int i = 0; i < datosListas.size(); i++) {
+                        listas.addElement(datosListas.get(i));
+                    }
+                    datosListas.clear();
+                    break;
+                   
             }
         } catch (SQLException e) {
         }
     }
       
       
-      
-            
-        public boolean insertaCarreraAsignatura(String asignatura,String carrera){ 
+                
+        public boolean insertaTemaSubtema(String subtema,String tema){ 
         boolean bandera=false;
         
         try {
              
             
-            String id_asignatura_curricular=queryBusca2.BuscaIDAsignaturaCurricular(asignatura);
-            int id_carrera=queryBusca3.BuscaIdCarrera(carrera);
+           // String id_asignatura_curricular=queryBusca2.BuscaIDAsignaturaCurricular(asignatura);
+            String id_tema=queryBusca3.BuscaIdtema(tema);
             
             
-            queryInserta1.insertaCarreraAsignatura(id_asignatura_curricular, id_carrera);
-             CUtilitario.msg("Se enviaron los datos exitosamente de la carrera con asignatura", "inserta carrera_asignatura");
+           // queryInserta1.insertaAsignaturaTema(id_asignatura_curricular, id_tema);
+             CUtilitario.msg("Se enviaron los datos exitosamente la asignatura con el tema", "inserta asignatura_tema");
            bandera=true;
              
              
@@ -132,7 +112,15 @@ public class JFRegistroCarreraAsignatura extends javax.swing.JFrame {
     
    }
     
-    
+      
+               
+        
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -145,8 +133,8 @@ public class JFRegistroCarreraAsignatura extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        JCBAsignatura = new javax.swing.JComboBox<>();
-        JCBCarrera = new javax.swing.JComboBox<>();
+        JCBSubtema = new javax.swing.JComboBox<>();
+        JCBTema = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,11 +142,16 @@ public class JFRegistroCarreraAsignatura extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
-        jLabel3.setText("Carrera asignatura");
+        jLabel3.setText("Asignatura Tema subtema");
 
         jButton1.setText("REGRESAR");
 
         jButton2.setText("LIMPIAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("ENVIAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -191,46 +184,52 @@ public class JFRegistroCarreraAsignatura extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel1.setText("Asignatura");
+        jLabel1.setText("Subtema");
 
-        jLabel2.setText("Carrera");
+        jLabel2.setText("Tema");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(38, 38, 38)
+                                    .addComponent(jLabel1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(JCBSubtema, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(37, 37, 37)
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(JCBTema, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(jLabel3)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(JCBAsignatura, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(JCBCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(149, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(110, 110, 110))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel3)
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(JCBAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)
-                        .addComponent(JCBCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JCBTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JCBSubtema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -255,12 +254,18 @@ public class JFRegistroCarreraAsignatura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        asignaValores();
-        insertaCarreraAsignatura(asignatura, carrera);
-        limpiar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+
+        //asignaValores();
+        //insertaCarreraAsignatura(asignatura, carrera);
+
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -280,27 +285,27 @@ public class JFRegistroCarreraAsignatura extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFRegistroCarreraAsignatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFRegistroTemaSubtema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFRegistroCarreraAsignatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFRegistroTemaSubtema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFRegistroCarreraAsignatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFRegistroTemaSubtema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFRegistroCarreraAsignatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFRegistroTemaSubtema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFRegistroCarreraAsignatura().setVisible(true);
+                new JFRegistroTemaSubtema().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> JCBAsignatura;
-    private javax.swing.JComboBox<String> JCBCarrera;
+    private javax.swing.JComboBox<String> JCBSubtema;
+    private javax.swing.JComboBox<String> JCBTema;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

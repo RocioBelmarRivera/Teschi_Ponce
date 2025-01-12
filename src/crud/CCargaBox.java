@@ -39,6 +39,13 @@ public class CCargaBox {
 "ORDER BY ac.id_asignatura; ";
         return cnslt.buscarValoresCombos(consulta);
     }
+        
+        
+        
+         public ArrayList<String> cargaNombreTema() throws SQLException {
+        consulta = "SELECT nombreTema FROM tema";
+        return cnslt.buscarValoresCombos(consulta);
+    }
          
     
 }

@@ -173,6 +173,18 @@ public class CInserta {
 }
         
         
+      public boolean insertaAsignaturaTema(String id_asignatura_curricular, String id_tema) throws SQLException {
+    consulta = "CALL InsertarAsignaturaTema('" + id_asignatura_curricular + "', '" + id_tema + "');";
+    return cnslt.inserta(consulta);
+}
+      
+         public boolean insertaTemaSubtema(String id_asignatura_curricular, String id_tema) throws SQLException {
+    consulta = "CALL InsertarAsignaturaTema('" + id_asignatura_curricular + "', '" + id_tema + "');";
+    return cnslt.inserta(consulta);
+}
+
+        
+        
     
       
 }

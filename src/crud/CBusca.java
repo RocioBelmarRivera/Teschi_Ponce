@@ -179,8 +179,20 @@ public class CBusca {
     return   Integer.parseInt(cnslt.buscarValor(consulta));
 }
  
+              
+//                                
+//              public String BuscaIdtema(String tema) throws SQLException {
+//    consulta = consulta = "SELECT id_tema\n" +
+//"FROM tema\n" +
+//"WHERE nombreTema = '" + tema + "';";   
+//    return   (cnslt.buscarValor(consulta));
+//}
       
- 
+ public String BuscaIdtema(String tema) throws SQLException {
+    consulta = "CALL ObtenerIdTema('" + tema + "');";   
+    return (cnslt.buscarValor(consulta));
+}
+
    
      
      
