@@ -4,6 +4,7 @@
  */
 package Ventanas;
 
+import Utilitarios.CUtilitario;
 import crud.CBusca;
 import crud.CCargaBox;
 import crud.CInserta;
@@ -21,6 +22,15 @@ public class JFRegistroAlumnoGrupo extends javax.swing.JFrame {
   
     public JFRegistroAlumnoGrupo() {
         initComponents();
+        
+        cargaComboBox(JCBAlumno, 2);
+        cargaComboBox(JCBGrupo, 1);
+        
+                // Ajustar el tamaño automáticamente
+        pack();
+        
+        // Centrar el JFrame en la pantalla
+        setLocationRelativeTo(null);
     }
 
         private DefaultComboBoxModel listas;
@@ -81,7 +91,36 @@ public class JFRegistroAlumnoGrupo extends javax.swing.JFrame {
         } catch (SQLException e) {
         }
     }
+      
+      
+      
+      
+                
+        public boolean insertaAlumno_grupo(String alumno,String grupo){ 
+        boolean bandera=false;
         
+        try {
+             
+            
+            String matriculaAlumno=queryBusca2.BuscaMatriculaPorNombreCompleto(alumno);
+            String id_grupo=queryBusca3.BuscaIdGrupoPorNombre(grupo);
+            
+            
+            queryInserta1.insertaAlumnoGrupo(matriculaAlumno, id_grupo);
+             CUtilitario.msg("Se enviaron los datos exitosamente la alumno con el grupo", "inserta alumno_grupo");
+           bandera=true;
+             
+             
+            // return ultimoID;
+        } catch (Exception e) {
+        // Registrar el error o manejarlo de alguna forma
+      //  e.printStackTrace();  // Esto imprimirá el stack trace para ayudar en el diagnóstico del error.
+        CUtilitario.msg_error("problema al insertar alumno_grupo. Por favor intente nuevamente.", "alumno_grupo");
+         return false;
+    }
+    return bandera;
+    
+   }
         
         
         
@@ -222,9 +261,10 @@ public class JFRegistroAlumnoGrupo extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
 
-        //asignaValores();
+        asignaValores();
         //insertaCarreraAsignatura(asignatura, carrera);
-
+            insertaAlumno_grupo(alumnno, grupo);
+            limpiar();
       
     }//GEN-LAST:event_jButton3ActionPerformed
 
