@@ -200,6 +200,28 @@ public String BuscaIdSubtema(String subtema) throws SQLException {
     return (cnslt.buscarValor(consulta));
 }
 
+
+
+
+public String BuscaIdPersonaPorNombreCompleto(String nombreCompleto) throws SQLException {
+    consulta = "CALL ObtenerIdPersonaPorNombreCompleto('" + nombreCompleto + "');";
+    return cnslt.buscarValor(consulta);
+}
+
+
+public String BuscaMatriculaPorNombreCompleto(String nombreCompleto) throws SQLException {
+    consulta = "CALL ObtenerMatriculaPorNombreCompleto('" + nombreCompleto + "');";
+    return cnslt.buscarValor(consulta);
+}
+
+
+public String BuscaIdGrupoPorNombre(String grupo) throws SQLException {
+    consulta = "CALL ObtenerIdGrupoPorNombre('" + grupo + "');";
+    return cnslt.buscarValor(consulta);
+}
+
+
+
      
      
     
