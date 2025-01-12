@@ -13,10 +13,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
-/**
- *
- * @author HP
- */
+
 public class JFRegistroTemaSubtema extends javax.swing.JFrame {
 
     /**
@@ -24,6 +21,13 @@ public class JFRegistroTemaSubtema extends javax.swing.JFrame {
      */
     public JFRegistroTemaSubtema() {
         initComponents();
+        
+        
+           // Ajustar el tamaño automáticamente
+        pack();
+        
+        // Centrar el JFrame en la pantalla
+        setLocationRelativeTo(null);
     }
     
       private DefaultComboBoxModel listas;
