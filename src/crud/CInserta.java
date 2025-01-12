@@ -185,7 +185,17 @@ public class CInserta {
     return cnslt.inserta(consulta);
 }
 
-        
+    
+    
+//     public boolean insertaAlumnoGrupo(String id_tema, String id_subtema) throws SQLException {
+//    consulta = "CALL InsertarTemaSubtema('" + id_tema + "', " + id_subtema + ");";
+//    return cnslt.inserta(consulta);
+//}
+    public boolean insertaAlumnoGrupo(String matriculaAlumno, String id_grupo) throws SQLException {
+    consulta = "CALL InsertarAlumnoGrupo('" + matriculaAlumno + "', " + id_grupo + ");";
+    return cnslt.inserta(consulta);
+}
+    
     
       
 }
