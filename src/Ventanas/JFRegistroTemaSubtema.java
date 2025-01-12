@@ -22,6 +22,8 @@ public class JFRegistroTemaSubtema extends javax.swing.JFrame {
     public JFRegistroTemaSubtema() {
         initComponents();
         
+        cargaComboBox(JCBTema, 2);
+        cargaComboBox(JCBSubtema, 1);
         
            // Ajustar el tamaño automáticamente
         pack();
@@ -68,7 +70,7 @@ public class JFRegistroTemaSubtema extends javax.swing.JFrame {
         try {
             switch (metodoCarga) {
                 case 1:
-                    datosListas = queryCarga1.cargaNombreAsignaturaCurricular();
+                    datosListas = queryCarga1.cargaNombreSubtema();
                     for (int i = 0; i < datosListas.size(); i++) {
                         listas.addElement(datosListas.get(i));
                     }
@@ -96,11 +98,11 @@ public class JFRegistroTemaSubtema extends javax.swing.JFrame {
         try {
              
             
-           // String id_asignatura_curricular=queryBusca2.BuscaIDAsignaturaCurricular(asignatura);
+           String id_subtema=queryBusca2.BuscaIdSubtema(subtema);
             String id_tema=queryBusca3.BuscaIdtema(tema);
             
             
-           // queryInserta1.insertaAsignaturaTema(id_asignatura_curricular, id_tema);
+           queryInserta1.insertaTemaSubtema(id_tema, id_subtema);
              CUtilitario.msg("Se enviaron los datos exitosamente la asignatura con el tema", "inserta asignatura_tema");
            bandera=true;
              
