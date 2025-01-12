@@ -268,9 +268,10 @@ public class JFRegistroTemaSubtema extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
 
-        //asignaValores();
+        asignaValores();
         //insertaCarreraAsignatura(asignatura, carrera);
-
+        insertaTemaSubtema(subtema, tema);
+        limpiar();
        
     }//GEN-LAST:event_jButton3ActionPerformed
 
