@@ -19,7 +19,7 @@ public class CBusca {
     return cnslt.buscarValor(consulta);  // Devuelve el último id insertado.
     }
     
-    
+            
       public String buscaCarrera(String nombreCarrera) throws SQLException {
     consulta = "SELECT nombreCarrera " +
                "FROM carrera " +
@@ -193,7 +193,13 @@ public class CBusca {
     return (cnslt.buscarValor(consulta));
 }
 
-   
+ 
+
+public String BuscaIdSubtema(String subtema) throws SQLException {
+    consulta = "CALL BuscaIdSubtema('" + subtema + "');";   
+    return (cnslt.buscarValor(consulta));
+}
+
      
      
     
