@@ -222,8 +222,30 @@ public String BuscaIdGrupoPorNombre(String grupo) throws SQLException {
 
 
 
+
+
+//
+//public String BuscaIdVersionPordatos(String version) throws SQLException {
+//    // Corregir la concatenación del parámetro 'version' en la consulta SQL
+//    consulta = "SELECT version.id_version\n" +
+//               "FROM version\n" +
+//               "JOIN asignatura_curricular ON version.id_asignatura_curricular = asignatura_curricular.id_asignatura_curricular\n" +
+//               "JOIN asignatura ON asignatura_curricular.id_asignatura = asignatura.id_asignatura\n" +
+//               "JOIN ciclo ON version.id_ciclo = ciclo.id_ciclo\n" +
+//               "JOIN origen ON version.id_origen = origen.id_origen\n" +
+//               "WHERE CONCAT(ciclo.ciclo, ' ', asignatura.nombreAsignatura, ' ', origen.descripcion) LIKE '%" + version + "%';";
+//
+//    return cnslt.buscarValor(consulta);  // Se usa la consulta directamente, sin necesidad de PreparedStatement
+//}
+
      
-     
+     public String BuscaIdVersionPordatos(String version) throws SQLException {
+    // Llamamos al procedimiento almacenado 'ObtenerIdVersionPorDatos'
+    consulta = "CALL ObtenerIdVersionPorDatos('" + version + "');";
+    
+    return cnslt.buscarValor(consulta);  // Se usa la consulta directamente para llamar al SP
+}
+
     
     
     
