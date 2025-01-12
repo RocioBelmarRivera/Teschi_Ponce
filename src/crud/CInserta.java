@@ -196,6 +196,13 @@ public class CInserta {
     return cnslt.inserta(consulta);
 }
     
+   
+    
+    public boolean insertaGrupoVersion(String idVersion, String idGrupo) throws SQLException {
+    consulta = "CALL InsertarGrupoVersionNuevo('" + idVersion + "', " + idGrupo + ");";
+    return cnslt.inserta(consulta);
+}
+
     
       
 }
