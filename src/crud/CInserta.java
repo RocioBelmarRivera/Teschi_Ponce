@@ -202,6 +202,18 @@ public class CInserta {
     consulta = "CALL InsertarGrupoVersionNuevo('" + idVersion + "', " + idGrupo + ");";
     return cnslt.inserta(consulta);
 }
+    
+  
+
+
+public boolean insertaAlumnoVersion(String matriculaAlumno, String idVersion, String calificacion) throws SQLException {
+    // Construcción de la consulta para llamar al SP
+    consulta = "CALL InsertarAlumnoVersionNuevo('" + matriculaAlumno + "', '" + idVersion + "', " + calificacion + ");";
+    
+    // Ejecutar la consulta y devolver el resultado de la inserción
+    return cnslt.inserta(consulta);
+}
+
 
     
       
