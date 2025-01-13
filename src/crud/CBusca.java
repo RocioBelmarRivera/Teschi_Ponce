@@ -246,7 +246,14 @@ public String BuscaIdGrupoPorNombre(String grupo) throws SQLException {
     return cnslt.buscarValor(consulta);  // Se usa la consulta directamente para llamar al SP
 }
 
+    public String buscaMatriculaDocentePorNombre(String nombreCompleto) throws SQLException {
+    // Llamamos al SP con el nombre completo del docente
+    consulta = "CALL ObtenerMatriculaDocentePorNombre(?);";
     
+    // Llamamos al método de consulta que ejecuta el SP y obtiene la matrícula del docente
+    return cnslt.buscarValor(consulta);
+}
+
     
     
 }
