@@ -78,6 +78,15 @@ public class CCargaBox {
     String consulta = "CALL ObtenerDetallesCompletos();";
     return cnslt.buscarValoresCombos(consulta);
 }
+    
+    
+
+
+public ArrayList<String> cargaNombreCompletosDocente() throws SQLException {
+    // Cambiar la consulta para llamar al procedimiento almacenado 'ObtenerDocentesOrdenados'
+    String consulta = "CALL ObtenerDocentesOrdenados();";
+    return cnslt.buscarValoresCombos(consulta);
+}
 
     
     
