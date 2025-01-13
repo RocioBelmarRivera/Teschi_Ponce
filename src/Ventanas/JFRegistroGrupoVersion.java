@@ -110,7 +110,7 @@ public class JFRegistroGrupoVersion extends javax.swing.JFrame {
             
             
            queryInserta1.insertaGrupoVersion(id_version, id_grupo);
-             CUtilitario.msg("Se enviaron los datos exitosamente la alumno con el grupo", "inserta alumno_grupo");
+             CUtilitario.msg("Se enviaron los datos exitosamente la version con el grupo", "inserta version_grupo");
            bandera=true;
              
              
@@ -118,7 +118,7 @@ public class JFRegistroGrupoVersion extends javax.swing.JFrame {
         } catch (Exception e) {
         // Registrar el error o manejarlo de alguna forma
       //  e.printStackTrace();  // Esto imprimirá el stack trace para ayudar en el diagnóstico del error.
-        CUtilitario.msg_error("problema al insertar alumno_grupo. Por favor intente nuevamente.", "alumno_grupo");
+        CUtilitario.msg_error("problema al insertar grupo_version. Por favor intente nuevamente.", "grupo_version");
          return false;
     }
     return bandera;
