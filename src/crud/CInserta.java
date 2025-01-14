@@ -214,7 +214,28 @@ public boolean insertaAlumnoVersion(String matriculaAlumno, String idVersion, St
     return cnslt.inserta(consulta);
 }
 
-
+ public boolean insertaDocenteGrupo(String matriculaDocente, String idGrupo) throws SQLException {
+    // Llamamos al SP para insertar los datos en la tabla docente_grupo
+    consulta = "CALL InsertarDocenteGrupo('" + matriculaDocente + "', " + idGrupo + ");";
     
+    // Llamamos al método de inserción que ejecuta el SP y retorna un booleano indicando el éxito
+    return cnslt.inserta(consulta);
+}
+ 
+ 
+ 
+ public boolean insertarVersion(String claveVersion, String id_asignatura_curricular, String id_ciclo, String horasTotales, String id_origen) throws SQLException {
+    // Llamamos al SP para insertar los datos en la tabla version
+    consulta = "CALL insertarVersion('" + claveVersion + "', '" + id_asignatura_curricular + "', '" + id_ciclo + "', " + horasTotales + ", '" + id_origen + "');";
+    
+    // Llamamos al método de inserción que ejecuta el SP y retorna un booleano indicando el éxito
+    return cnslt.inserta(consulta);
+}
+
+    public boolean insertarAdministrador(String matriculaAdministrador, int idPersona) throws SQLException {
+    consulta = "CALL InsertarAdministrador('" + matriculaAdministrador + "', " + idPersona + ");";
+     return cnslt.inserta(consulta);
+}
+
       
 }
