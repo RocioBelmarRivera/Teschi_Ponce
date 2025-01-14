@@ -54,7 +54,8 @@ public class JFAuAlumno extends javax.swing.JFrame {
                     resultado[6],
                     resultado[7],
                     resultado[8],
-                    resultado[9]
+                    resultado[9],
+                    resultado[10]
                 });
             }
         } catch (SQLException e) {
