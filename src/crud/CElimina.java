@@ -22,6 +22,12 @@ public class CElimina {
         consulta = "SELECT * FROM audita_carrera WHERE 1";
         return cons.busca(consulta);
     }
+     
+     
+      public ArrayList<String[]> buscaAlumno() throws SQLException {
+        consulta = "SELECT * FROM auditoria_alumno WHERE 1";
+        return cons.busca(consulta);
+    }
 
     
 }
