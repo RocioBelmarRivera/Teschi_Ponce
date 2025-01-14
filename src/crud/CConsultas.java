@@ -268,4 +268,71 @@ public class CConsultas {
     }
     
     
+        /*******************ACTUALIZA******************/
+        public boolean actualiza_Asig_Curri(String consulta) throws SQLException {
+        conn = conector.conectar();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(consulta);
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            CUtilitario.msg_error("Error: " + e.getMessage(), "actualiza objeto");
+        } finally {
+            conector.cerrar_conexion(conn);
+        }
+        return false;
+    }
+        
+        
+        
+        
+        
+    public ArrayList<String[]> buscar_objetos1(String consulta) throws SQLException {
+        //1. Abrir la conexion 
+        conn = conector.conectar();
+        //2. Ejecutar la query(consulta)
+        try {
+            resultados = new ArrayList<>();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(consulta);
+            if (rs == null) {
+                CUtilitario.msg_adver("Elementos no encontrados", "Buscar objeto");
+            } else {
+                while (rs.next()) {
+                    resultados.add(new String[]{
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                    });
+                }
+            }
+        } catch (SQLException ex) {
+            String cadena = "SQLException: " + ex.getMessage() + "\n"
+                    + "SQLState: " + ex.getSQLState() + "\n"
+                    + "VendorError: " + ex.getErrorCode();
+            CUtilitario.msg_error(cadena, "conexion");
+        } finally {
+            //CERRAR RESULTADOS
+            try {
+                rs.close();
+            } catch (SQLException e) {
+            }
+            //cerrar statement
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+            }
+            //cerrar conexion
+            conector.cerrar_conexion(conn);
+        }
+        return resultados;
+    }
+
+   /**************************************************/
+    
+    
+    
 }
