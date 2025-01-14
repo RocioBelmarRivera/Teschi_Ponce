@@ -203,6 +203,34 @@ public class JFRegistroCiclo extends javax.swing.JFrame {
     }
     
     
+        
+       // Método para validar las fechas
+    public boolean validaCiclo(String ciclo) {
+        // Validar el formato de las fechas usando regex
+   
+       try {
+           CBusca queryBusca1 = new CBusca();   
+         String resultado= queryBusca1.obtenerIdCicloPorCiclo(ciclo);
+         
+            if (resultado==null) {
+                
+            return false;
+                
+            }else{
+            return true;
+            }
+            
+            
+         } catch (Exception e) {
+        // Registrar el error o manejarlo de alguna forma
+      //  e.printStackTrace();  // Esto imprimirá el stack trace para ayudar en el diagnóstico del error.
+        CUtilitario.msg_error("Hubo un problema en la el nombre del subtema. Por favor intente nuevamente.", "Error de conexión");
+        return false;  // Retornamos false en caso de error
+    }
+    }
+    
+    
+    
     
         public static boolean validaCicloYFecha(String cicloEscolar, String fechaInicio) {
             
@@ -428,8 +456,17 @@ public class JFRegistroCiclo extends javax.swing.JFrame {
                  System.out.println("La fecha de inicio no puede ser posterior a la fecha de término.");
                  CUtilitario.msg_adver("La fecha de inicio no puede ser posterior o igual a la fecha de término.", "Registro fechas"); 
                 }else{
-                 insertaCiclo(claveCiclo, ciclo, fechaInicio, fechatermino);
+                    
+                    if (validaCiclo(ciclo)) {
+                         System.out.println("El ciclo ya existe");
+                          CUtilitario.msg_adver("El ciclo ya esta ya existe", "verifica Ciclo");
+                    }else{
+                     insertaCiclo(claveCiclo, ciclo, fechaInicio, fechatermino);
                  limpiar();
+                    }
+                    
+                    
+                
                 }
                         
                         
