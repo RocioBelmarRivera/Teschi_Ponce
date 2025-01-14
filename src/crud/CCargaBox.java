@@ -32,11 +32,15 @@ public class CCargaBox {
     }
          
          
-        public ArrayList<String> cargaNombreAsignaturaCurricular() throws SQLException {
-        consulta = "SELECT a.nombreAsignatura\n" +
-        "FROM asignatura a\n" +
-        "JOIN asignatura_curricular ac ON a.id_asignatura = ac.id_asignatura\n" +
-        "ORDER BY ac.id_asignatura; ";
+//        public ArrayList<String> cargaNombreAsignaturaCurricular() throws SQLException {
+//        consulta = "SELECT a.nombreAsignatura\n" +
+//        "FROM asignatura a\n" +
+//        "JOIN asignatura_curricular ac ON a.id_asignatura = ac.id_asignatura\n" +
+//        "ORDER BY ac.id_asignatura; ";
+//        return cnslt.buscarValoresCombos(consulta);
+//    }
+          public ArrayList<String> cargaNombreAsignaturaCurricular() throws SQLException {
+        consulta = "CALL cargaNombreAsignaturaCurricular();";
         return cnslt.buscarValoresCombos(consulta);
     }
         
@@ -89,7 +93,15 @@ public ArrayList<String> cargaNombreCompletosDocente() throws SQLException {
 }
 
     
-    
+ public ArrayList<String> cargaCiclosEscolares() throws SQLException {
+    consulta = "CALL obtenerCiclosEscolares();";
+    return cnslt.buscarValoresCombos(consulta);
+}
+public ArrayList<String> cargaDescripcionesOrigen() throws SQLException {
+    consulta = "CALL obtenerDescripcionesOrigen();";
+    return cnslt.buscarValoresCombos(consulta);
+}
+
     
 
     
