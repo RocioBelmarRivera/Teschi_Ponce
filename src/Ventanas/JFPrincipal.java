@@ -91,10 +91,10 @@ public class JFPrincipal extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel5.setText("CONTRASEÑA");
+        jLabel5.setText("MATRICULA");
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setText("CURP");
+        jLabel6.setText("CORREO");
 
         jButton5.setText("LIMPIAR");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
