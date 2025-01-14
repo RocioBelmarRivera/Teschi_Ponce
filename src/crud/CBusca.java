@@ -223,6 +223,10 @@ public String BuscaIdGrupoPorNombre(String grupo) throws SQLException {
 
 
 
+public String BuscaMatriculaAdministrador(String matricula) throws SQLException {
+    consulta = "CALL ObtenerMatriculaAdministrador('" + matricula + "');";
+    return cnslt.buscarValor(consulta);
+}
 
 //
 //public String BuscaIdVersionPordatos(String version) throws SQLException {
@@ -248,11 +252,40 @@ public String BuscaIdGrupoPorNombre(String grupo) throws SQLException {
 
     public String buscaMatriculaDocentePorNombre(String nombreCompleto) throws SQLException {
     // Llamamos al SP con el nombre completo del docente
-    consulta = "CALL ObtenerMatriculaDocentePorNombre(?);";
+    consulta = "CALL ObtenerMatriculaDocentePorNombre('" + nombreCompleto + "');";
     
     // Llamamos al método de consulta que ejecuta el SP y obtiene la matrícula del docente
     return cnslt.buscarValor(consulta);
 }
+
+    public String BuscaIdVersionPorId(String claveVersion) throws SQLException {
+    // Llamamos al SP con el idVersion como parámetro
+    consulta = "CALL obtenerIdVersionPorId('" + claveVersion + "');";
+    
+    // Llamamos al método de consulta que ejecuta el SP y obtiene el id_version
+    return cnslt.buscarValor(consulta);
+}
+
+  public String obtenerIdCicloPorCiclo(String ciclo) throws SQLException {
+    // Llamamos al SP con el ciclo como parámetro
+    consulta = "CALL obtenerIdCicloPorCiclo('" + ciclo + "');";
+    
+   
+    // Retornamos el id_ciclo
+    return cnslt.buscarValor(consulta);
+}
+  
+  
+  public String obtenerIdOrigenPorDescripcion(String origen) throws SQLException {
+    // Llamamos al SP con el parámetro descripcion
+    consulta = "CALL obtenerIdOrigenPorDescripcion('" + origen + "');";
+    
+    // Retornamos el id_origen
+    return cnslt.buscarValor(consulta);
+}
+
+ 
+  
 
     
     
