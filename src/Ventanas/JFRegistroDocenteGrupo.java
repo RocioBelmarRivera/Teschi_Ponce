@@ -51,6 +51,15 @@ public class JFRegistroDocenteGrupo extends javax.swing.JFrame {
       String grupo;
       
       
+        public void limpiar(){
+    
+    JCBGrupo.setSelectedIndex(0); 
+    // Limpiar el JComboBox, restaurándolo a la selección inicial o vacía
+    JCBDocente.setSelectedIndex(0);  // 0 selecciona el primer ítem de la lista, o puedes usar -1 para deseleccionar
+    
+    }
+    
+      
       
              
     public void asignaValores(){    
@@ -97,11 +106,11 @@ public class JFRegistroDocenteGrupo extends javax.swing.JFrame {
         try {
              
             
-            String matriculaDocente=queryBusca2.buscaMatriculaDocentePorNombre(grupo);
+            String matriculaDocente=queryBusca2.buscaMatriculaDocentePorNombre(docente);
             String id_grupo=queryBusca3.BuscaIdGrupoPorNombre(grupo);
             
             
-            //queryInserta1.inser
+            queryInserta1.insertaDocenteGrupo(matriculaDocente, id_grupo);
              CUtilitario.msg("Se enviaron los datos exitosamente la alumno con el grupo", "inserta alumno_grupo");
            bandera=true;
              
@@ -255,12 +264,16 @@ public class JFRegistroDocenteGrupo extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
+        
+        limpiar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-
+        
+        asignaValores();
+        insertaDocente_grupo(docente, grupo);
+        limpiar();
        
     }//GEN-LAST:event_jButton3ActionPerformed
 
