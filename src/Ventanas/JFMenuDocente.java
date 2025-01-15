@@ -8,15 +8,14 @@ package Ventanas;
  *
  * @author HP
  */
-public class JFMenu extends javax.swing.JFrame {
+public class JFMenuDocente extends javax.swing.JFrame {
 
     /**
-     * Creates new form JFMenu
+     * Creates new form JFMenuDocente
      */
-    public JFMenu() {
+    public JFMenuDocente() {
         initComponents();
-                  // Ajustar el tamaño automáticamente
-        pack();
+           pack();
         
         // Centrar el JFrame en la pantalla
         setLocationRelativeTo(null);
@@ -32,6 +31,7 @@ public class JFMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        JbtnBuro = new javax.swing.JButton();
         JbtnBuro1 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel3 = new javax.swing.JLabel();
@@ -42,9 +42,18 @@ public class JFMenu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
+        JbtnBuro.setBackground(new java.awt.Color(160, 16, 70));
+        JbtnBuro.setForeground(new java.awt.Color(255, 255, 255));
+        JbtnBuro.setText("CONSULTAR MATERIAS IMPARTIDAS");
+        JbtnBuro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnBuroActionPerformed(evt);
+            }
+        });
+
         JbtnBuro1.setBackground(new java.awt.Color(160, 16, 70));
         JbtnBuro1.setForeground(new java.awt.Color(255, 255, 255));
-        JbtnBuro1.setText("HISTORIAL ACADÉMICO");
+        JbtnBuro1.setText("ASIGNAR CALIFICACIONES");
         JbtnBuro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JbtnBuro1ActionPerformed(evt);
@@ -54,7 +63,7 @@ public class JFMenu extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Stencil", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 0, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("MENU ALUMNO");
+        jLabel3.setText("MENU DOCENTE");
 
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -64,7 +73,7 @@ public class JFMenu extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -110,8 +119,13 @@ public class JFMenu extends javax.swing.JFrame {
                 .addComponent(jDesktopPane1))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(JbtnBuro1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(JbtnBuro1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(JbtnBuro)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -124,6 +138,8 @@ public class JFMenu extends javax.swing.JFrame {
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(JbtnBuro1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(JbtnBuro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -148,6 +164,20 @@ public class JFMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JbtnBuroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnBuroActionPerformed
+        // Crear una instancia del JFrame de destino
+//        JFActualiza actualizaFrame = new JFActualiza();
+//        // Centrar el JFrame en la pantalla
+//
+//        actualizaFrame.pack();
+//        actualizaFrame.setLocationRelativeTo(null);
+//        // Hacer visible el JFrame de destino
+//        actualizaFrame.setVisible(true);
+
+        // Opcional: Cerrar o esconder el JFrame actual si lo deseas
+        this.dispose(); // Esto cierra la ventana actual
+    }//GEN-LAST:event_JbtnBuroActionPerformed
 
     private void JbtnBuro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnBuro1ActionPerformed
         JTRegistroAlumnoVersion calificacion = new JTRegistroAlumnoVersion();
@@ -188,25 +218,26 @@ public class JFMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFMenuDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFMenuDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFMenuDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFMenuDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFMenu().setVisible(true);
+                new JFMenuDocente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JbtnBuro;
     private javax.swing.JButton JbtnBuro1;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;

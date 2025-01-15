@@ -30,7 +30,11 @@ public class JFRegistroJefesCarrera extends javax.swing.JFrame {
         cargaComboBox(JCBEstado, 1);
            jLExtensionCorreo.setText(jTMatricula.getText()+jLExtensionCorreo.getText());
            
-           
+                      // Ajustar el tamaño automáticamente
+        pack();
+        
+        // Centrar el JFrame en la pantalla
+        setLocationRelativeTo(null);
            
            
              // Añadimos un DocumentListener al JTextField jTMatricula
