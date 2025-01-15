@@ -31,7 +31,11 @@ public class JFRegistroAlumno extends javax.swing.JFrame {
            jLExtensionCorreo.setText(jTMatricula.getText()+jLExtensionCorreo.getText());
            
            
-           
+                      // Ajustar el tamaño automáticamente
+        pack();
+        
+        // Centrar el JFrame en la pantalla
+        setLocationRelativeTo(null);
            
              // Añadimos un DocumentListener al JTextField jTMatricula
         jTMatricula.getDocument().addDocumentListener(new DocumentListener() {
