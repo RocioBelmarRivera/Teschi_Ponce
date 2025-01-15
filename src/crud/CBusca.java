@@ -285,7 +285,77 @@ public String BuscaMatriculaAdministrador(String matricula) throws SQLException 
 }
 
  
+  public String obtenerCorreoPorCorreo(String correo) throws SQLException {
+    consulta = "CALL ObtenerCorreoPorCorreo('" + correo + "')";
+    return cnslt.buscarValor(consulta);
+}
+
   
+  public String obtenerIdDocentePorCorreo(String correo) throws SQLException {
+    consulta = "CALL ObtenerIdDocentePorCorreo('" + correo + "')";
+    return cnslt.buscarValor(consulta);
+}
+
+  public String obtenerMatriculaAlumnoPorCorreo(String correo) throws SQLException {
+    consulta = "CALL ObtenerMatriculaAlumnoPorCorreo('" + correo + "')";
+    return cnslt.buscarValor(consulta);
+}
+  
+  public String obtenerMatriculaAdministradorPorCorreo(String correo) throws SQLException {
+    consulta = "CALL ObtenerMatriculaAdministradorPorCorreo('" + correo + "')";
+    return cnslt.buscarValor(consulta);
+}
+
+
+public String obtenerMatriculaAlumno(String matricula) throws SQLException {
+    consulta = "CALL ObtenerMatriculaAlumno('" + matricula + "')";
+    return cnslt.buscarValor(consulta);
+}
+
+
+public String obtenerMatriculaDocentePorMatricula(String matricula) throws SQLException {
+    // Llamamos al SP con la matrícula como parámetro
+    String consulta = "CALL obtenerMatriculaDocentePorMatricula('" + matricula + "');";
+    
+    // Ejecutamos la consulta y retornamos la matrícula del docente
+    return cnslt.buscarValor(consulta);
+}
+
+
+public String obtenerMatriculaAdministradorPorMatricula(String matricula) throws SQLException {
+    // Llamamos al SP con la matrícula como parámetro
+    String consulta = "CALL obtenerMatriculaAdministradorPorMatricula('" + matricula + "');";
+    
+    // Ejecutamos la consulta y retornamos la matrícula del administrador
+    return cnslt.buscarValor(consulta);
+}
+
+
+
+public String obtenerMatriculaAlumnoPorMatriculaYCorreo(String matriculaAlumno, String correo) throws SQLException {
+    // Llamamos al SP con la matrícula del alumno y el correo como parámetros
+    String consulta = "CALL obtenerMatriculaAlumnoPorMatriculaYCorreo('" + matriculaAlumno + "', '" + correo + "');";
+    
+    // Ejecutamos la consulta y retornamos la matrícula del alumno
+    return cnslt.buscarValor(consulta);
+}
+
+
+public String obtenerMatriculaDocentePorMatriculaYCorreo(String matriculaDocente, String correo) throws SQLException {
+    // Llamamos al SP con la matrícula del docente y el correo como parámetros
+    String consulta = "CALL obtenerMatriculaDocentePorMatriculaYCorreo('" + matriculaDocente + "', '" + correo + "');";
+    
+    // Ejecutamos la consulta y retornamos la matrícula del docente
+    return cnslt.buscarValor(consulta);
+}
+
+public String obtenerMatriculaAdministradorPorMatriculaYCorreo(String matriculaAdministrador, String correo) throws SQLException {
+    // Llamamos al SP con la matrícula del administrador y el correo como parámetros
+    String consulta = "CALL obtenerMatriculaAdministradorPorMatriculaYCorreo('" + matriculaAdministrador + "', '" + correo + "');";
+    
+    // Ejecutamos la consulta y retornamos la matrícula del administrador
+    return cnslt.buscarValor(consulta);
+}
 
     
     
