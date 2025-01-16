@@ -27,6 +27,10 @@ public class JFRegistroAsignaturaCocurricular extends javax.swing.JFrame {
         initComponents();
         
         cargaComboBox(JCBNombreAsignatura, 1);
+            pack();
+                   
+        // Centrar el JFrame en la pantalla
+        setLocationRelativeTo(null);
     }
 
    
